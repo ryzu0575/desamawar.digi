@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Desa Mawar </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-clean fixed-top bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center text-primary" href="index.html">
+                <img src="img/logo.png" width="40" class="me-2"> DESA MAWAR
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-bold small text-uppercase">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile.html">Profil Desa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#apbdes">Transparansi</a></li>
+                    <li class="nav-item ms-3">
+                        <a href="login.html" class="btn btn-primary rounded-pill px-4 shadow-sm">Layanan Mandiri</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-dark text-white pt-5 mt-5 pb-5 text-center">
+        <div class="container fade-in">
+            <h1 class="fw-bold">PROFIL DESA</h1>
+            <p class="lead" id="view-moto">Loading Moto...</p>
+        </div>
+    </header>
+
+    <div class="container py-5" id="profile-content">
+        
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="clean-card p-4 bg-white">
+                    <h4 class="fw-bold border-bottom pb-2 mb-3 text-primary"><i class="fas fa-history me-2"></i> Sejarah Desa</h4>
+                    <p id="view-sejarah" style="white-space: pre-line; line-height: 1.8;">Memuat Sejarah...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5 g-4">
+            <div class="col-md-6">
+                <div class="clean-card p-4 bg-white h-100">
+                    <h4 class="fw-bold border-bottom pb-2 mb-3 text-success"><i class="fas fa-bullseye me-2"></i> Visi & Misi</h4>
+                    <h6 class="fw-bold">Visi:</h6>
+                    <p id="view-visi" class="fst-italic">...</p>
+                    <h6 class="fw-bold mt-3">Misi:</h6>
+                    <p id="view-misi" style="white-space: pre-line;">...</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="clean-card p-4 bg-white h-100">
+                    <h4 class="fw-bold border-bottom pb-2 mb-3 text-info"><i class="fas fa-tasks me-2"></i> Program Kerja Unggulan</h4>
+                    <ul class="list-group list-group-flush" id="view-programs">
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-uppercase">Struktur Pemerintahan Desa</h3>
+                <div class="bg-primary mx-auto" style="width: 60px; height: 3px;"></div>
+            </div>
+            
+            <div class="row justify-content-center" id="view-structure">
+                </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <div class="container">
+            <small>&copy; 2025 Pemerintah Desa Mawar. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

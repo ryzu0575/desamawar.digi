@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard Terintegrasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold text-warning" href="#">
+                <i class="fas fa-user-cog me-2"></i> PANEL ADMIN DESA
+            </a>
+            <div class="ms-auto d-flex align-items-center">
+                <span class="text-white me-3 small d-none d-md-block">Status: <span class="text-success fw-bold">Online</span></span>
+                <a href="login.html" class="btn btn-sm btn-danger fw-bold"><i class="fas fa-sign-out-alt me-1"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 60px;">
+        <div class="row">
+            
+            <div class="col-md-2 bg-white border-end px-0 sidebar-sticky" style="min-height: 100vh;">
+                <div class="p-3 position-fixed" style="width: 16.666%;">
+                    <small class="text-muted fw-bold text-uppercase ls-1">Menu Utama</small>
+                    <ul class="nav flex-column nav-pills mt-2 gap-1">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#req"><i class="fas fa-envelope-open-text me-2"></i> Permohonan Surat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#stats"><i class="fas fa-chart-bar me-2"></i> Kelola Statistik</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#umkm"><i class="fas fa-store me-2"></i> Data UMKM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#apbdes"><i class="fas fa-coins me-2"></i> APBDes & Belanja</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#news"><i class="fas fa-newspaper me-2"></i> Berita Desa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#profile"><i class="fas fa-landmark me-2"></i> Profil Desa</a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link bg-success text-white text-center fw-bold shadow-sm" href="index.html" target="_blank">
+                                <i class="fas fa-external-link-alt me-2"></i> LIHAT WEBSITE
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-10 p-4 offset-md-2">
+                
+                <div id="admin-stats">
+
+                    <div class="clean-card bg-white p-4 mb-5 shadow-sm" id="req">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-primary m-0"><i class="fas fa-inbox me-2"></i> Kotak Masuk Permohonan</h5>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="location.reload()"><i class="fas fa-sync"></i> Refresh</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered align-middle small">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Data Pemohon (WA)</th>
+                                        <th>Jenis Surat</th>
+                                        <th>Berkas Upload</th>
+                                        <th>Aksi Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-request-table">
+                                    <tr><td colspan="5" class="text-center">Memuat data...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="clean-card bg-white p-4 mb-5 shadow-sm" id="stats">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-dark"><i class="fas fa-chart-pie me-2"></i> Update Data Diagram Statistik</h5>
+                            <button class="btn btn-primary btn-sm" onclick="saveAdminStats()"><i class="fas fa-save me-2"></i> SIMPAN PERUBAHAN</button>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h6 class="fw-bold small border-bottom pb-2">Jenis Kelamin</h6>
+                                    <div class="mb-1"><small>Pria</small><input type="number" id="st-pria" class="form-control form-control-sm"></div>
+                                    <div><small>Wanita</small><input type="number" id="st-wanita" class="form-control form-control-sm"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h6 class="fw-bold small border-bottom pb-2">Usia</h6>
+                                    <div class="mb-1"><small>Anak</small><input type="number" id="st-anak" class="form-control form-control-sm"></div>
+                                    <div class="mb-1"><small>Produktif</small><input type="number" id="st-prod" class="form-control form-control-sm"></div>
+                                    <div><small>Lansia</small><input type="number" id="st-lansia" class="form-control form-control-sm"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h6 class="fw-bold small border-bottom pb-2">Keluarga Berencana</h6>
+                                    <div class="row g-1">
+                                        <div class="col-6"><small>Pil</small><input type="number" id="st-pil" class="form-control form-control-sm"></div>
+                                        <div class="col-6"><small>Suntik</small><input type="number" id="st-suntik" class="form-control form-control-sm"></div>
+                                        <div class="col-6"><small>IUD</small><input type="number" id="st-iud" class="form-control form-control-sm"></div>
+                                        <div class="col-6"><small>Implant</small><input type="number" id="st-implant" class="form-control form-control-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h6 class="fw-bold small border-bottom pb-2">Bansos</h6>
+                                    <div class="mb-1"><small>PKH</small><input type="number" id="st-pkh" class="form-control form-control-sm"></div>
+                                    <div class="mb-1"><small>BLT DD</small><input type="number" id="st-blt" class="form-control form-control-sm"></div>
+                                    <div><small>BPNT</small><input type="number" id="st-bpnt" class="form-control form-control-sm"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="p-3 border rounded bg-light">
+                                    <h6 class="fw-bold small border-bottom pb-2">Ekonomi / Pekerjaan</h6>
+                                    <div class="row g-2">
+                                        <div class="col"><small>Petani</small><input type="number" id="st-tani" class="form-control form-control-sm"></div>
+                                        <div class="col"><small>Pedagang</small><input type="number" id="st-dagang" class="form-control form-control-sm"></div>
+                                        <div class="col"><small>PNS/TNI</small><input type="number" id="st-pns" class="form-control form-control-sm"></div>
+                                        <div class="col"><small>Buruh</small><input type="number" id="st-buruh" class="form-control form-control-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clean-card bg-white p-4 mb-5 shadow-sm" id="umkm">
+                        <h5 class="fw-bold mb-3 text-warning"><i class="fas fa-store me-2"></i> Pendaftar Pendampingan UMKM</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-striped small align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Pemilik & Kontak</th>
+                                        <th>Data Usaha</th>
+                                        <th>Berkas Upload</th>
+                                        <th>Status Verifikasi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-umkm-regs">
+                                    </tbody>
+                            </table>
+                        </div>
+                        <hr class="my-4">
+                        <h6 class="fw-bold">Tambah Produk ke Katalog UMKM</h6>
+                        <div class="input-group mb-3">
+                            <input type="text" id="pr-name" class="form-control" placeholder="Nama Produk">
+                            <input type="number" id="pr-price" class="form-control" placeholder="Harga (Rp)">
+                            <button class="btn btn-success" onclick="addProduct()"><i class="fas fa-plus"></i> Tambah Produk</button>
+                        </div>
+                        <table class="table table-sm table-bordered">
+                            <tbody id="table-products"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="clean-card bg-white p-4 mb-5 shadow-sm" id="apbdes">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h5 class="fw-bold text-success"><i class="fas fa-coins me-2"></i> Edit APBDes</h5>
+                                <div class="alert alert-info py-2 small">Ubah Target/Realisasi, Klik OK.</div>
+                                <div id="admin-apbdes-edit">
+                                    </div>
+                            </div>
+                            <div class="col-md-6 border-start">
+                                <h5 class="fw-bold text-danger"><i class="fas fa-shopping-cart me-2"></i> Rincian Belanja</h5>
+                                <div class="bg-light p-3 rounded mb-2">
+                                    <div class="row g-1">
+                                        <div class="col-3"><input type="date" id="sp-date" class="form-control form-control-sm"></div>
+                                        <div class="col-3"><input type="text" id="sp-prog" class="form-control form-control-sm" placeholder="Program"></div>
+                                        <div class="col-3"><input type="text" id="sp-item" class="form-control form-control-sm" placeholder="Item"></div>
+                                        <div class="col-3"><input type="number" id="sp-nom" class="form-control form-control-sm" placeholder="Rp"></div>
+                                        <div class="col-12 mt-2"><button class="btn btn-success btn-sm w-100" onclick="addSpending()">+ Tambah Pengeluaran</button></div>
+                                    </div>
+                                </div>
+                                <table class="table table-sm small"><tbody id="admin-spending-table"></tbody></table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-5">
+                            <div class="clean-card bg-white p-4 h-100 shadow-sm" id="news">
+                                <h5 class="fw-bold"><i class="fas fa-newspaper me-2"></i> Kelola Berita</h5>
+                                <button class="btn btn-primary btn-sm w-100 mb-3" onclick="addNews()">+ Posting Berita Baru</button>
+                                <ul class="list-group list-group-flush" id="admin-news-list"></ul>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="clean-card bg-white p-4 h-100 shadow-sm" id="profile">
+                                <h5 class="fw-bold"><i class="fas fa-id-card me-2"></i> Edit Profil Desa</h5>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-12"><input type="text" id="edit-moto" class="form-control form-control-sm" placeholder="Moto Desa"></div>
+                                    <div class="col-12"><textarea id="edit-sejarah" class="form-control form-control-sm" rows="2" placeholder="Sejarah Singkat"></textarea></div>
+                                    <div class="col-12"><button class="btn btn-dark btn-sm w-100" onclick="saveAdminProfile()">Simpan Teks Profil</button></div>
+                                </div>
+                                <hr>
+                                <h6 class="small fw-bold">Struktur Organisasi</h6>
+                                <div class="input-group input-group-sm mb-2">
+                                    <input type="text" id="st-name" class="form-control" placeholder="Nama">
+                                    <input type="text" id="st-role" class="form-control" placeholder="Jabatan">
+                                    <button class="btn btn-success" onclick="addStructure()">+</button>
+                                </div>
+                                <div style="max-height: 150px; overflow-y: auto;">
+                                    <table class="table table-sm small"><tbody id="admin-struct-table"></tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

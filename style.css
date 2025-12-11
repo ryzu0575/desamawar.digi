@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --success: #198754;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --purple-custom: #6f42c1;
+    --pink-custom: #d63384;
+}
+
+body { font-family: 'Poppins', sans-serif; background-color: #f4f6f9; color: var(--dark); }
+
+/* --- CARD STYLE --- */
+.clean-card {
+    background: #fff; border: 1px solid rgba(0,0,0,.05); border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.03); transition: transform 0.3s;
+}
+.clean-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+
+/* --- NAVBAR --- */
+.navbar-clean { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.nav-link.active { color: var(--primary) !important; font-weight: 700; }
+
+/* --- HERO --- */
+.hero {
+    background: url('img/banner.jpg') center/cover; height: 500px; position: relative;
+    border-radius: 0 0 50px 50px; overflow: hidden;
+}
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
+
+/* --- UTILS --- */
+.bg-purple { background-color: var(--purple-custom) !important; }
+.bg-pink { background-color: var(--pink-custom) !important; }
+.text-purple { color: var(--purple-custom) !important; }
+.form-control { border-radius: 8px; padding: 10px; }
+.btn { border-radius: 50px; padding: 8px 24px; font-weight: 600; }
+
+/* --- SIDEBAR ADMIN --- */
+.sidebar-sticky { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+.nav-pills .nav-link.active { background-color: var(--primary); }
+.nav-pills .nav-link { color: var(--dark); margin-bottom: 5px; }
